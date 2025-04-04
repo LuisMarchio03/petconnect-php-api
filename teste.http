@@ -1,0 +1,122 @@
+### Criar denúncia
+POST http://localhost/seu-projeto/denuncias
+Content-Type: application/json
+
+{
+  "foto": "foto.jpg",
+  "telefone": "999999999",
+  "endereco": "Rua Exemplo, 123",
+  "localizacao_maps": "https://maps.google.com",
+  "data_denuncia": "2025-04-04",
+  "observacao": "Animal em situação de risco",
+  "tipo_denuncia": "Abandono",
+  "fk_situacao_denuncia": 1,
+  "fk_id_animal": 1
+}
+
+### Listar todas as denúncias
+GET http://localhost/seu-projeto/denuncias
+
+### Buscar denúncia por ID
+GET http://localhost/seu-projeto/denuncias/1
+
+### Atualizar denúncia
+PUT http://localhost/seu-projeto/denuncias/1
+Content-Type: application/json
+
+{
+  "observacao": "Atualização de observação"
+}
+
+### Deletar denúncia
+DELETE http://localhost/seu-projeto/denuncias/1
+
+### Criar resgate
+POST http://localhost/seu-projeto/resgates
+Content-Type: application/json
+
+{
+  "foto": "resgate.jpg",
+  "telefone": "88888888",
+  "data_resgate": "2025-04-04",
+  "endereco": "Av. Central",
+  "observacao": "Animal resgatado com sucesso",
+  "fk_id_denuncia": 1,
+  "acompanhamento_policial": true,
+  "fk_situacao_resgate": 2,
+  "fk_id_animal": 1
+}
+
+### Listar resgates
+GET http://localhost/seu-projeto/resgates
+
+### Criar avaliação de saúde
+POST http://localhost/seu-projeto/saude_avaliacoes
+Content-Type: application/json
+
+{
+  "fk_id_resgate": 1,
+  "exame_clinico": "Ok",
+  "exame_laboratorial": "Hemograma alterado",
+  "vermifugo": "Sim",
+  "antipulga": "Sim",
+  "data_avaliacao": "2025-04-04"
+}
+
+### Testes de saúde
+POST http://localhost/seu-projeto/saude_avaliacao_testes
+Content-Type: application/json
+
+{
+  "tipo_teste": "Parvovirose",
+  "resultado": "Negativo",
+  "fk_id_avaliacao": 1,
+  "data_teste": "2025-04-04"
+}
+
+### Criar animal
+POST http://localhost/seu-projeto/animal
+Content-Type: application/json
+
+{
+  "nome": "Bidu",
+  "fk_especie": 1,
+  "fk_raca": 1,
+  "idade": 2,
+  "sexo": "M",
+  "fk_porte": 1,
+  "fk_cor_predominante": 1,
+  "descricao": "Cachorro dócil",
+  "fk_localizacao": 1
+}
+
+### Criar adoção
+POST http://localhost/seu-projeto/adocao
+Content-Type: application/json
+
+{
+  "fk_id_animal": 1,
+  "fk_tutor": 1
+}
+
+### Criar tutor
+POST http://localhost/seu-projeto/tutor
+Content-Type: application/json
+
+{
+  "nome": "João da Silva",
+  "cpf": "12345678901",
+  "telefone": "999999999",
+  "endereco": "Rua das Flores, 321"
+}
+
+### Criar apadrinhamento
+POST http://localhost/seu-projeto/apadrinhamento
+Content-Type: application/json
+
+{
+  "fk_animal": 1,
+  "fk_padrinho": 1,
+  "data_apadrinhamento": "2025-04-04",
+  "valor_contribuicao": 50.00
+}
